@@ -45,6 +45,21 @@ Source: https://raw.githubusercontent.com/srobbin/jquery-backstretch/
 
 == Changelog ==
 
+Version 1.22 (2018-10-07)
+-------------------------
+- Updated with Gutenberg support
+	- Gutenberg editor styles
+	- Styling of Gutenberg blocks
+	- Custom Baskerville Gutenberg palette
+	- Custom Baskerville Gutenberg typography styles
+- Added option to disable Google Fonts with a translateable string
+- Improved compatibility with < PHP 5.5
+- Various fixes
+
+Version 1.21 (2018-05-24)
+-------------------------
+- Fixed output of comments cookie checkbox
+
 Version 1.20 (2017-12-03)
 -------------------------
 - The pluggable update: all functions in functions.php are now pluggable

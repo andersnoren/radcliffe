@@ -4,7 +4,7 @@
 
 	Theme Name: Radcliffe
     Text Domain: radcliffe
-	Version: 1.20
+	Version: 1.22
 	Description: A theme for bloggers who want their content to take center stage. Radcliffe features responsive design, retina-ready assets, full width header images, beautiful design and typography, support for custom logo, support for custom accent color, three widget areas, editor style and translation-ready code. Demo: http://www.andersnoren.se/themes/radcliffe/
 	Tags: blog, one-column, custom-colors, custom-menu, editor-style, featured-images, footer-widgets, post-formats, sticky-post, theme-options, threaded-comments, translation-ready, photography
 	Author: Anders Norén
@@ -915,12 +915,17 @@ abbr, acronym { cursor: help; }
 .post-content dl dt { font-weight: bold; }
 
 .post-content hr {
-	display: block;
-	width: 100px;
-	height: 2px;
 	background: #ddd;
-	margin: 40px auto;
 	border: none;
+	display: block;
+	height: 2px;
+	margin: 3em auto;
+	width: 100px;
+}
+
+.post-content hr.is-style-wide,
+.post-content hr.is-style-dots {
+	width: 100%;
 }
 
 .post-content ul {
@@ -979,6 +984,9 @@ abbr, acronym { cursor: help; }
 
 /* Post media --------------------------------------- */
 
+figure {
+	margin: 0;
+}
 
 .wp-caption,
 .post-content img {
@@ -1012,17 +1020,10 @@ abbr, acronym { cursor: help; }
 	margin-left: 1.5em;
 }
 
+.post-content .alignnone,
 .post-content .aligncenter { 
-	margin-left: auto; 
-	margin-right: auto;
+	margin: 2em auto;
 }
-
-.post-content .alignnone {
-	max-width: 940px;
-	margin: 30px -100px;
-}
-
-.post-content a.alignnone { width: 940px; }
 
 .post-content .aligncenter img,
 .post-content img.aligncenter {
@@ -1031,19 +1032,39 @@ abbr, acronym { cursor: help; }
 	margin-right: auto;
 }
 
+.post-content figcaption,
 .post-content .wp-caption-text,
 .post-content .gallery-caption {
-	padding-top: 15px;
+	color: #888;
 	font-family: 'Open Sans', sans-serif;
 	font-size: 14px;
 	font-weight: 600;
-	color: #888;
+	margin: 0;
+	padding-top: 15px;
 	text-align: center;
 }
 
 .post-content .gallery-caption {
 	font-size: 16px;
 	line-height: 24px;
+}
+
+
+/* GUTENBERG CLASSES */
+
+.post-content .alignfull {
+	margin: 2.5em 0;
+	max-width: 100vw;
+	position: relative;
+		left: calc( 50% - 50vw );
+	width: 100vw;
+}
+
+.post-content .alignwide {
+	margin: 2.5em 0;
+	margin-left: -150px;
+	max-width: 1040px;
+	width: 1040px;
 }
 
 
@@ -1138,11 +1159,7 @@ abbr, acronym { cursor: help; }
 	color: #333;
 	background: #eee;
 	border-radius: 3px;
-	-webkit-transition: background 0.2s ease-in-out;
-	-moz-transition: background 0.2s ease-in-out;
-	-ms-transition: background 0.2s ease-in-out;
-	-o-transition: background 0.2s ease-in-out;
-	transition: background 0.2s ease-in-out;
+	transition: background-color 0.2s ease-in-out;
 	-webkit-appearance: none;
 }
 
@@ -1161,17 +1178,18 @@ abbr, acronym { cursor: help; }
 	outline: none;
 }
 
-.post-content input[type="submit"],
-.post-content input[type="reset"],
-.post-content input[type="button"] {
+input[type="submit"],
+input[type="reset"],
+input[type="button"] {
+	-webkit-appearance: none;
 	padding: 12px 16px;
 	margin: 0;
 	border: none;
 	background: #222;
 	color: #fff;
+	font-family: inherit;
 	font-size: 0.9rem;
 	line-height: 1;
-	-webkit-appearance: none;
 	border-radius: 3px;
 }
 
@@ -1196,6 +1214,182 @@ abbr, acronym { cursor: help; }
 .post-content input[type="submit"]:focus,
 .post-content input[type="submit"]:active {
 	outline: none;
+}
+
+
+/* Gutenberg Accent Colors --------------------------------------- */
+
+.post-content .has-background { background-color: #222; }
+
+.post-content .has-accent-color { color: #ca2017; }
+.post-content .has-accent-background-color { background-color: #ca2017; }
+
+.post-content .has-black-color { color: #222; }
+.post-content .has-black-background-color { background-color: #222; }
+
+.post-content .has-dark-gray-color { color: #444; }
+.post-content .has-dark-gray-background-color { background-color: #444; }
+
+.post-content .has-medium-gray-color { color: #666; }
+.post-content .has-medium-gray-background-color { background-color: #666; }
+
+.post-content .has-light-gray-color { color: #888; }
+.post-content .has-light-gray-background-color { background-color: #888; }
+
+.post-content .has-white-color { color: #fff; }
+.post-content .has-white-background-color { background-color: #fff; }
+
+
+/* Gutenberg Font Sizes --------------------------------------- */
+
+.post-content .has-small-font-size { font-size: .842em; }
+.post-content .has-regular-font-size { font-size: 1em; }
+
+.post-content .has-large-font-size,
+.post-content .has-larger-font-size {
+	line-height: 1.45;
+}
+
+.post-content .has-large-font-size { font-size: 1.333em; }
+.post-content .has-larger-font-size { font-size: 1.777em; }
+
+
+/* Block: Image --------------------------------------- */
+
+.wp-block-image .aligncenter > figcaption, 
+.wp-block-image .alignleft > figcaption, 
+.wp-block-image .alignright > figcaption, 
+.wp-block-image.is-resized > figcaption {
+	display: block;
+	width: 100%;
+}
+
+
+/* Block: Button --------------------------------------- */
+
+
+.wp-block-button {
+	font-family: 'Open Sans', sans-serif;	
+}
+
+
+/* Block: File --------------------------------------- */
+
+.post-content .wp-block-file {
+	align-items: center;
+	background: #E6E9EC;
+	border-radius: 4px;
+	display: flex;
+	font-family: 'Open Sans', sans-serif;
+	justify-content: space-between;
+	margin: 30px 0;
+	padding: 15px 20px;
+}
+
+.post-content .wp-block-file a:not(.wp-block-file__button) {
+	font-weight: 600;
+	text-decoration: none;
+}
+
+.post-content .wp-block-file__button,
+.post-content .wp-block-button__link {
+	border-radius: 4px;
+	font-weight: 500;
+	padding: .8em 1.4em;
+}
+
+.post-content .wp-block-file a {
+	color: inherit;
+}
+
+.post-content a.wp-block-file__button {
+	color: #fff;
+	flex-shrink: 0;
+}
+
+.post-content .wp-block-file__button:hover,
+.post-content .wp-block-button__link:hover {
+	opacity: .85;
+	text-decoration: none;
+}
+
+
+/* Block: Quote --------------------------------------- */
+
+.post-content blockquote,
+.post-content .wp-block-quote.is-large, 
+.post-content .wp-block-quote.is-style-large {
+	margin-bottom: 1.25em;
+	padding: 0;
+}
+
+.post-content blockquote p:last-child {
+	margin-bottom: 0;
+}
+
+.wp-block-quote.is-large p, 
+.wp-block-quote.is-style-large p {
+	font-size: 1.33em;
+	line-height: 1.5;
+}
+
+.post-content .wp-block-quote cite {
+	text-align: center;
+}
+
+.wp-block-quote.is-large cite, 
+.wp-block-quote.is-style-large cite {
+	font-size: 0.8em;
+}
+
+
+/* Block: Pullquote --------------------------------------- */
+
+.wp-block-pullquote {
+	padding: 0;
+}
+
+
+/* Block: Gallery --------------------------------------- */
+
+.wp-block-gallery .blocks-gallery-image figcaption, 
+.wp-block-gallery .blocks-gallery-item figcaption {
+	margin: 0;
+	padding-bottom: 10px;
+}
+
+.post-content .wp-block-gallery.alignfull {
+	padding: 0 8px;
+}
+
+.post-content ul.wp-block-gallery:not(.alignfull):not(.alignwide) {
+	margin-left: 0;
+}
+
+
+/* Block: Cover Image --------------------------------------- */
+
+.wp-block-cover-image.alignfull {
+	min-height: 75vh;
+}
+
+.wp-block-cover-image p {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+}
+
+
+/* Block: Column --------------------------------------- */
+
+.wp-block-column {
+	padding: 0 5px;
+}
+
+
+/* Block: Audio --------------------------------------- */
+
+.wp-block-audio audio {
+	width: 100%;
 }
 
 
@@ -1451,29 +1645,53 @@ li.comment {
 
 .comment-reply-title #cancel-comment-reply-link:hover { text-decoration: underline; }
 
-.comment-notes,
-.logged-in-as { 
+.comment-form {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.comment-form p {
+	margin-bottom: 18px;
+	width: 100%;
+}
+
+.comment-form p.comment-form-author,
+.comment-form p.comment-form-email,
+.comment-form p.comment-form-url {
+	width: calc( 33.33% - 1rem );
+}
+
+.comment-form p.comment-form-email,
+.comment-form p.comment-form-url {
+	margin-left: 1.5rem;
+}
+
+.comment-form p.comment-notes,
+.comment-form p.logged-in-as { 
 	text-align: center; 
+	line-height: 1.4;
 	margin-bottom: 75px; 
 	color: #666;
 }
 
 .logged-in-as a:hover { text-decoration: underline; }
 
-.comment-form-comment + .thirds { margin-top: 28px; }
-
-.comment-respond .thirds { margin-bottom: 28px; }
-
-.comment-respond .third {
-	width: 31%;
-	float: left;
-	margin-left: 3.5%;
+.comment-respond label {
+	display: block;
+	font-size: 15px;
+	margin: 0 0 8px 0;
 }
 
-.comment-respond .third:first-child { margin-left: 0; }
+.comment-respond input[type="checkbox"] + label {
+	display: inline;
+	font-size: 14px;
+	margin: 0 0 0 5px;
+}
 
-.comment-respond input,
+.comment-respond input[type="text"],
+.comment-respond input[type="email"],
 .comment-respond textarea {
+	-webkit-appearance: none;
 	box-sizing: border-box;
 	width: 100%;
 	padding: 20px;
@@ -1485,9 +1703,9 @@ li.comment {
 	color: #222;
 }
 
-.comment-respond input { 
-	padding: 15px 20px; 
-	-webkit-appearance: none;
+.comment-respond input[type="text"],
+.comment-respond input[type="email"] { 
+	padding: 15px 20px;
 }
 
 .comment-respond input:focus,
@@ -1512,20 +1730,21 @@ li.comment {
 	text-align: center;
 }
 
-.comment-respond .form-allowed-tags code { line-height: 160%; background: none; color: #666; }
+.comment-respond .form-allowed-tags code { 
+	background: none; 
+	color: #666; 
+	line-height: 1.6; 
+}
 
-.comment-respond .form-submit {
-	margin-top: 30px;
+.comment-respond p.form-submit {
+	margin: 30px 0 0 0;
 	text-align: center;
 }
 
 .comment-respond #submit {
-	width: auto;
+	font-size: 16px;
 	margin: 0 auto;
-	background: #222;
-	color: #FFF;
-	border: none;
-	border-radius: 3px;
+	padding: 18px 24px;
 }
 
 .comment-respond #submit:hover {
@@ -1941,15 +2160,23 @@ li.comment {
 }
 
 
-@media (max-width: 1020px) {
-	
-	
-	.post-content .alignnone {
-		max-width: 100%;
-		margin: 0 auto;
+@media ( max-width: 1040px ) {
+
+
+	.post-content .alignwide {
+		margin: 2.5em auto;
+		position: relative;
+			left: calc( 50% - 46vw );
+		max-width: 92vw;
+		width: 92vw;
 	}
-	
-	.post-content a.alignnone { width: auto; }
+
+
+}
+
+
+@media (max-width: 1020px) {
+
 	
 	.post-content .alignright,
 	.post-content .alignleft { max-width: 45%; }
@@ -2173,7 +2400,7 @@ li.comment {
 }
 
 
-@media (max-width: 600px) {
+@media ( max-width: 600px ) {
 
 	body { font-size: 16px; }
 	
@@ -2293,19 +2520,10 @@ li.comment {
 	
 	.post-content .alignleft,
 	.post-content .alignright {
-		display: block;
-		max-width: none;
 		float: none;
-		margin-right: auto;
-		margin-left: auto;
-	}
-	
-	.post-content .alignleft a,
-	.post-content .alignleft img,
-	.post-content .alignright a,
-	.post-content .alignright img {
-		display: block;
-		margin: 0 auto;
+		margin: 2em auto;
+		max-width: 100%;
+		width: 100%;
 	}
 		
 	/* comments */
@@ -2350,28 +2568,26 @@ li.comment {
 	.comment-reply-title #cancel-comment-reply-link { font-size: 0.8rem; }
 	
 	.comment-respond .comment-reply-title { margin-bottom: 15px; }
+
+	.comment-form p.comment-form-author,
+	.comment-form p.comment-form-email,
+	.comment-form p.comment-form-url {
+		width: 100%;
+		margin-left: 0;
+	}
 	
-	.comment-respond .logged-in-as,
-	.comment-respond .comment-notes { 
+	.comment-respond p.logged-in-as,
+	.comment-respond p.comment-notes { 
 		margin-bottom: 30px; 
 		font-size: 0.9em; 
 	}
 	
-	.comment-respond .third {
-		width: 100%;
-		margin: 0 0 12px 0;
-		float: none;
-	}
-	
-	.comment-respond input,
+	.comment-respond input[type="text"],
+	.comment-respond input[type="email"],
 	.comment-respond textarea { 
 		font-size: 1em; 
 		padding: 12px 16px; 
 	}
-	
-	.comment-respond .thirds { margin: 0; }
-    
-    .comment-form-comment + .thirds { margin-top: 12px; }
 	
 	.comment-respond textarea { height: 200px; }
 	
@@ -2380,7 +2596,9 @@ li.comment {
 		font-size: 0.75em;
 	}
 	
-	.comment-respond .form-submit { margin-top: 15px; }
+	.comment-respond p.form-submit { 
+		margin-top: 20px; 
+	}
 	
 	/* pagination */
 	
