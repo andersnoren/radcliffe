@@ -45,6 +45,10 @@ Source: https://raw.githubusercontent.com/srobbin/jquery-backstretch/
 
 == Changelog ==
 
+Version 1.23 (2018-10-07)
+-------------------------
+- Updated theme description
+
 Version 1.22 (2018-10-07)
 -------------------------
 - Updated with Gutenberg support
