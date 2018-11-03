@@ -45,6 +45,10 @@ Source: https://raw.githubusercontent.com/srobbin/jquery-backstretch/
 
 == Changelog ==
 
+Version 1.24 (2018-11-03)
+-------------------------
+- Fixed the archive template date
+
 Version 1.23 (2018-10-07)
 -------------------------
 - Updated theme description
