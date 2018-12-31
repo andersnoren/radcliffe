@@ -2,64 +2,64 @@
 
 <div class="content">		
 
-	<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-	
-		<div <?php post_class( 'post single' ); ?>>
+	<?php if ( have_posts() ) : 
 		
-			<?php if ( has_post_thumbnail() ) :
-				
-				$thumb = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'thumbnail_size' ); 
-				$thumb_url = $thumb['0']; 
-				
-				?>
-		
-				<div class="featured-media">
-				
-					<script type="text/javascript">
+		while ( have_posts() ) : the_post(); ?>
 	
-						jQuery( document ).ready( function( $ ) {
-							$( '.featured-media' ).backstretch( '<?php echo $thumb_url; ?>' );	
-						} );
+			<div <?php post_class( 'post single' ); ?>>
+			
+				<?php if ( has_post_thumbnail() ) : ?>
+					
+					<div class="featured-media" style="background-image: url( <?php the_post_thumbnail_url( $post->ID, 'post-image' ); ?> );">
+			
+						<?php 
 						
-					</script>
-		
-					<?php the_post_thumbnail( 'post-image' ); ?>
+						the_post_thumbnail( 'post-image' );
+						
+						$image_caption = get_post( get_post_thumbnail_id() )->post_excerpt;
+						
+						if ( $image_caption ) : 
+							?>
+												
+							<div class="media-caption-container">
+								<p class="media-caption"><?php echo $image_caption; ?></p>
+							</div>
+							
+						<?php endif; ?>
+						
+					</div><!-- .featured-media -->
+						
+				<?php endif; ?>
+												
+				<div class="post-header section">
+			
+					<div class="post-header-inner section-inner">
+																										
+						<?php the_title( '<h1 class="post-title">', '</h1>' ); ?>
 					
-				</div><!-- .featured-media -->
+					</div><!-- .post-header-inner section-inner -->
+															
+				</div><!-- .post-header section -->
 					
-			<?php endif; ?>
-											
-			<div class="post-header section">
-		
-				<div class="post-header-inner section-inner">
-																									
-					<?php the_title( '<h1 class="post-title">', '</h1>' ); ?>
+				<div class="post-content section-inner thin">
 				
-				</div><!-- .post-header-inner section-inner -->
-														
-			</div><!-- .post-header section -->
-			    
-		    <div class="post-content section-inner thin">
-		    
-		    	<?php the_content(); ?>
-		    	
-				<div class="clear"></div>
+					<?php the_content(); ?>
+					
+					<div class="clear"></div>
+					
+					<?php wp_link_pages('before=<p class="page-links">' . __( 'Pages:', 'radcliffe' ) . ' &after=</p>&seperator= <span class="sep">/</span> '); ?>
 				
-		    	<?php wp_link_pages('before=<p class="page-links">' . __( 'Pages:', 'radcliffe' ) . ' &after=</p>&seperator= <span class="sep">/</span> '); ?>
-		    
-		    </div>
+				</div>
 
-		</div><!-- .post -->
+			</div><!-- .post -->
+			
+			<?php
+			
+			comments_template( '', true );
 		
-		<?php comments_template( '', true );
+		endwhile; 
 	
-	endwhile; 
-	
-	else: ?>
-	
-		<p><?php _e( "We couldn't find any posts that matched your query. Please try again.", "radcliffe" ); ?></p>
-
-	<?php endif; ?>
+	endif; ?>
 
 	<div class="clear"></div>
 	

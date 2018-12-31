@@ -52,7 +52,6 @@ if ( ! function_exists( 'radcliffe_load_javascript_files' ) ) {
 	function radcliffe_load_javascript_files() {
 
 		if ( ! is_admin() ) {
-			wp_enqueue_script( 'radcliffe_backstretch', get_template_directory_uri() . '/js/jquery.backstretch.js', array( 'jquery' ), '', true );
 			wp_enqueue_script( 'radcliffe_global', get_template_directory_uri() . '/js/global.js', array( 'jquery' ), '', true );
 			if ( is_singular() ) wp_enqueue_script( 'comment-reply' );
 		}
@@ -335,17 +334,17 @@ if ( ! function_exists( 'radcliffe_comment' ) ) {
    --------------------------------------------------------------------------------------------- */
 
 
-class radcliffe_customize {
+class Radcliffe_Customize {
 
    public static function radcliffe_register( $wp_customize ) {
    
       //1. Define a new section (if desired) to the Theme Customizer
       $wp_customize->add_section( 'radcliffe_options', 
          array(
-            'title' 			=> __( 'Radcliffe Options', 'radcliffe' ), //Visible title of section
-            'priority' 			=> 35, //Determines what order this appears in
-            'capability' 		=> 'edit_theme_options', //Capability needed to tweak
-            'description' 		=> __( 'Allows you to customize theme settings for Radcliffe.', 'radcliffe'), //Descriptive tooltip
+            'title' 			=> __( 'Radcliffe Options', 'radcliffe' ), 
+            'priority' 			=> 35, 
+            'capability' 		=> 'edit_theme_options', 
+            'description' 		=> __( 'Allows you to customize theme settings for Radcliffe.', 'radcliffe'), 
          ) 
       );
       
@@ -356,12 +355,12 @@ class radcliffe_customize {
 		) );
       
       //2. Register new settings to the WP database...
-      $wp_customize->add_setting( 'accent_color', //No need to use a SERIALIZED name, as `theme_mod` settings already live under one db record
+      $wp_customize->add_setting( 'accent_color', 
          array(
-            'default' 			=> '#ca2017', //Default setting/value to save
-            'type' 				=> 'theme_mod', //Is this an 'option' or a 'theme_mod'?
-            'capability' 		=> 'edit_theme_options', //Optional. Special permissions for accessing this setting.
-            'transport' 		=> 'postMessage', //What triggers a refresh of the setting? 'refresh' or 'postMessage' (instant)?
+            'default' 			=> '#ca2017', 
+            'type' 				=> 'theme_mod', 
+            'capability' 		=> 'edit_theme_options', 
+            'transport' 		=> 'postMessage', 
             'sanitize_callback' => 'sanitize_hex_color'
          ) 
       );
@@ -373,14 +372,14 @@ class radcliffe_customize {
       );
                   
       //3. Finally, we define the control itself (which links a setting to a section and renders the HTML controls)...
-      $wp_customize->add_control( new WP_Customize_Color_Control( //Instantiate the color control class
-         $wp_customize, //Pass the $wp_customize object (required)
-         'radcliffe_accent_color', //Set a unique ID for the control
+      $wp_customize->add_control( new WP_Customize_Color_Control( 
+         $wp_customize, 
+         'radcliffe_accent_color', 
          array(
-            'label' 		=> __( 'Accent Color', 'radcliffe' ), //Admin-visible name of the control
-            'section' 		=> 'colors', //ID of the section this control should render in (can be one of yours, or a WordPress default section)
-            'settings' 		=> 'accent_color', //Which setting to load and manipulate (serialized is okay)
-            'priority' 		=> 10, //Determines the order this control appears in for the specified section
+            'label' 		=> __( 'Accent Color', 'radcliffe' ), 
+            'section' 		=> 'colors', 
+            'settings' 		=> 'accent_color', 
+            'priority' 		=> 10, 
          ) 
       ) );
       
@@ -457,13 +456,7 @@ class radcliffe_customize {
    }
    
    public static function radcliffe_live_preview() {
-      wp_enqueue_script( 
-           'radcliffe-themecustomizer', // Give the script a unique ID
-           get_template_directory_uri() . '/js/theme-customizer.js', // Define the path to the JS file
-           array( 'jquery', 'customize-preview' ), // Define dependencies
-           '', // Define a version (optional) 
-           true // Specify whether to put in footer (leave this true)
-      );
+      wp_enqueue_script( 'radcliffe-themecustomizer', get_template_directory_uri() . '/js/theme-customizer.js', array( 'jquery', 'customize-preview' ), '', true );
    }
 
    public static function radcliffe_generate_css( $selector, $style, $mod_name, $prefix='', $postfix='', $echo=true ) {
@@ -484,13 +477,13 @@ class radcliffe_customize {
 }
 
 // Setup the Theme Customizer settings and controls...
-add_action( 'customize_register' , array( 'radcliffe_customize' , 'radcliffe_register' ) );
+add_action( 'customize_register' , array( 'Radcliffe_Customize' , 'radcliffe_register' ) );
 
 // Output custom CSS to live site
-add_action( 'wp_head' , array( 'radcliffe_customize' , 'radcliffe_header_output' ) );
+add_action( 'wp_head' , array( 'Radcliffe_Customize' , 'radcliffe_header_output' ) );
 
 // Enqueue live preview javascript in Theme Customizer admin screen
-add_action( 'customize_preview_init' , array( 'radcliffe_customize' , 'radcliffe_live_preview' ) );
+add_action( 'customize_preview_init' , array( 'Radcliffe_Customize' , 'radcliffe_live_preview' ) );
 
 
 

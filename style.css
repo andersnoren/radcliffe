@@ -4,7 +4,7 @@
 
 	Theme Name: Radcliffe
     Text Domain: radcliffe
-	Version: 1.24
+	Version: 1.28
 	Description: A theme for bloggers who want their content to take center stage. Radcliffe features responsive design, retina-ready assets, full width header images, beautiful design and typography, Gutenberg support, support for custom logo, support for custom accent color, three widget areas, editor style and translation-ready code. Demo: http://www.andersnoren.se/themes/radcliffe/
 	Tags: blog, one-column, custom-colors, custom-menu, editor-style, featured-images, footer-widgets, post-formats, sticky-post, theme-options, threaded-comments, translation-ready, photography
 	Author: Anders Norén
@@ -113,9 +113,9 @@ body a:hover {
 }
 
 * { 
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box; 
 	box-sizing: border-box; 
-	-moz-box-sizing: border-box; 
-	-webkit-box-sizing: border-box;
 }
 
 img {
@@ -142,10 +142,6 @@ img {
 
 body a,
 .tagcloud a:before {
-	-webkit-transition: all 0.1s ease-in-out;
-	-moz-transition: all 0.1s ease-in-out;
-	-ms-transition: all 0.1s ease-in-out;
-	-o-transition: all 0.1s ease-in-out;
 	transition: all 0.1s ease-in-out;
 }
 
@@ -167,10 +163,6 @@ body a,
 .nav-toggle,
 .nav-toggle p,
 .nav-toggle .bar {
-	-webkit-transition: all 0.2s ease-in-out;
-	-moz-transition: all 0.2s ease-in-out;
-	-ms-transition: all 0.2s ease-in-out;
-	-o-transition: all 0.2s ease-in-out;
 	transition: all 0.2s ease-in-out;
 }
 
@@ -178,10 +170,6 @@ body a,
 .post-title,
 .search-form #s,
 .archive-nav a {
-	-webkit-transition: all 0.3s ease-in-out;
-	-moz-transition: all 0.3s ease-in-out;
-	-ms-transition: all 0.3s ease-in-out;
-	-o-transition: all 0.3s ease-in-out;
 	transition: all 0.3s ease-in-out;
 }
 
@@ -405,10 +393,6 @@ body a,
 	opacity: 0;
 	top: 45px;
 	left: -9999px;
-	-webkit-transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out;
-	-moz-transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out;
-	-ms-transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out;
-	-o-transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out;
 	transition: opacity 0.3s ease-in-out, top 0.3s ease-in-out;
 }
 
@@ -470,10 +454,6 @@ body a,
 	padding-right: 20px;
 	margin-left: -235px;
 	left: 0;
-	-webkit-transition: opacity 0.3s ease-in-out, margin 0.3s ease-in-out;
-	-moz-transition: opacity 0.3s ease-in-out, margin 0.3s ease-in-out;
-	-ms-transition: opacity 0.3s ease-in-out, margin 0.3s ease-in-out;
-	-o-transition: opacity 0.3s ease-in-out, margin 0.3s ease-in-out;
 	transition: opacity 0.3s ease-in-out, margin 0.3s ease-in-out;
 }
 
@@ -496,25 +476,42 @@ body a,
 /* -------------------------------------------------------------------------------- */
 
 
-.post { position: relative; }
+.post { 
+	position: relative; 
+}
 
-.posts .post.has-featured-image { min-height: 266px; }
+.posts {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.posts .post {
+	background-position: center;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	min-height: 682px;
+	width: 100%;
+}
 
 /* featured media */
 
 .featured-media { 
-	position: relative;
+	background-position: center;
+	background-size: cover;
 	display: block;
-	width: 100%;
 	max-height: 682px;
+	position: relative;
+	width: 100%;
 }
 
 a.featured-media:hover { opacity: 0.75; }
 
 .featured-media > img { 
-	visibility: hidden; 
 	display: block;
-	margin: 0 auto;
+	visibility: hidden; 
+	width: 100%;
 }
 
 .media-caption-container {
@@ -600,6 +597,7 @@ a.post-header .post-meta-top .sep {
 	text-transform: uppercase;
 	letter-spacing: 1px;
 	text-align: center;
+	word-break: break-word;
 }
 
 a.post-header .post-title { 
@@ -1075,7 +1073,8 @@ figure {
 	border-collapse: collapse;
     border-spacing: 0;
     empty-cells: show;
-    font-size: 0.9em;
+	font-size: 0.9em;
+	margin: 30px 0;
     width: 100%;
 }
 
@@ -1247,7 +1246,7 @@ input[type="button"] {
 
 .post-content .has-large-font-size,
 .post-content .has-larger-font-size {
-	line-height: 1.45;
+	line-height: 1.4;
 }
 
 .post-content .has-large-font-size { font-size: 1.333em; }
@@ -1782,7 +1781,10 @@ li.comment {
 /* Archive navigation --------------------------------------- */
 
 
-.archive-nav { background: #EEE; }
+.archive-nav { 
+	background: #EEE; 
+	width: 100%;
+}
 
 .archive-nav a {
 	display: block;
@@ -2149,6 +2151,10 @@ li.comment {
 @media (min-height: 1100px) {
 	
 	.featured-media { max-height: none; }
+
+	.posts .post {
+		min-height: 70vh;
+	}
 		
 }
 
@@ -2279,18 +2285,10 @@ li.comment {
 	.nav-toggle.active .bar:nth-child(2) { opacity: 0; }
 	
 	.nav-toggle.active .bar:nth-child(1) {
-		-webkit-transform: rotate(45deg); 
-		-moz-transform: rotate(45deg);  
-		-ms-transform: rotate(45deg); 
-		-o-transform: rotate(45deg); 
 		transform: rotate(45deg); 
 	}
 	
 	.nav-toggle.active .bar:nth-child(3) { 
-		-webkit-transform: rotate(-45deg); 
-		-moz-transform: rotate(-45deg);  
-		-ms-transform: rotate(-45deg); 
-		-o-transform: rotate(-45deg); 
 		transform: rotate(-45deg); 
 	}
 
@@ -2439,6 +2437,10 @@ li.comment {
 	}
 	
 	/* main content */
+
+	.posts .post {
+		min-height: 400px;
+	}
 	
 	.post-header { padding: 40px 0; }
 	.posts .post-header { padding: 30px 0; }
@@ -2658,6 +2660,10 @@ li.comment {
 	body { font-size: 15px; }
 		
 	/* main content */
+
+	.posts .post {
+		min-height: 288px;
+	}
 	
 	.post-meta-top { font-size: 0.8em; }
 	

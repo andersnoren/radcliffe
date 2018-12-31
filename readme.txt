@@ -2,7 +2,7 @@
 Contributors: Anlino
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=anders%40andersnoren%2ese&lc=US&item_name=Free%20WordPress%20Themes%20from%20Anders%20Noren&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 4.4
-Tested up to: 4.8
+Tested up to: 5.0
 Stable tag: trunk
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -38,12 +38,31 @@ screenshot.png post images
 License: CC0 Public Domain 
 Source: http://www.unsplash.com
 
-Backstretch.js
-License: MIT License 
-Source: https://raw.githubusercontent.com/srobbin/jquery-backstretch/
-
 
 == Changelog ==
+
+Version 1.28 (2018-12-19)
+-------------------------
+- Fixed the archive-nav width
+
+Version 1.27 (2018-12-07)
+-------------------------
+- Fixed Gutenberg style changes required due to changes in the block editor CSS and classes
+- Fixed the Classic Block TinyMCE buttons being set to the wrong font
+
+Version 1.26 (2018-12-06)
+-------------------------
+- Replaced Backstretch.js with pure CSS
+- Adjusted the structure of post previews so long titles won't cause the preview to overflow vertically
+- Added word-wrap to post titles
+- Removed old CSS vendor prefixes
+- Replaced archive.php and search.php with a smarter index.php
+- Minor code tweaks, cleanup
+- Made comments_popup_link() strings translateable
+
+Version 1.25 (2018-11-30)
+-------------------------
+- Fixed Gutenberg editor styles font being overwritten
 
 Version 1.24 (2018-11-03)
 -------------------------
