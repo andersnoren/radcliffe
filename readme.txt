@@ -41,6 +41,15 @@ Source: http://www.unsplash.com
 
 == Changelog ==
 
+Version 1.30 (2019-04-07)
+-------------------------
+- Added the new wp_body_open() function, along with a function_exists check
+
+Version 1.29 (2019-01-13)
+-------------------------
+- Updated the CSS so that the min-height of posts doesn't apply to posts without a featured image
+- Fixed margin of the last item in Block: Gallery
+
 Version 1.28 (2018-12-19)
 -------------------------
 - Fixed the archive-nav width

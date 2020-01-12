@@ -4,12 +4,12 @@
 
 	Theme Name: Radcliffe
     Text Domain: radcliffe
-	Version: 1.28
-	Description: A theme for bloggers who want their content to take center stage. Radcliffe features responsive design, retina-ready assets, full width header images, beautiful design and typography, Gutenberg support, support for custom logo, support for custom accent color, three widget areas, editor style and translation-ready code. Demo: http://www.andersnoren.se/themes/radcliffe/
+	Version: 1.30
+	Description: A theme for bloggers who want their content to take center stage. Radcliffe features responsive design, retina-ready assets, full width header images, beautiful design and typography, Block Editor/Gutenberg support, support for custom logo, support for custom accent color, three widget areas, and editor styles. Demo: https://www.andersnoren.se/themes/radcliffe/
 	Tags: blog, one-column, custom-colors, custom-menu, editor-style, featured-images, footer-widgets, post-formats, sticky-post, theme-options, threaded-comments, translation-ready, photography
 	Author: Anders Norén
-	Author URI: http://www.andersnoren.se
-	Theme URI: http://www.andersnoren.se/teman/radcliffe-wordpress-theme/
+	Author URI: https://www.andersnoren.se
+	Theme URI: https://www.andersnoren.se/teman/radcliffe-wordpress-theme/
 	License: GNU General Public License version 2.0
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	
@@ -491,8 +491,11 @@ body a,
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-end;
-	min-height: 682px;
 	width: 100%;
+}
+
+.posts .post.has-post-thumbnail {
+	min-height: 682px;
 }
 
 /* featured media */
@@ -1365,6 +1368,10 @@ input[type="button"] {
 	margin-left: 0;
 }
 
+.wp-block-gallery .blocks-gallery-item:last-child {
+	margin-bottom: 16px;
+}
+
 
 /* Block: Cover Image --------------------------------------- */
 
@@ -2152,7 +2159,7 @@ li.comment {
 	
 	.featured-media { max-height: none; }
 
-	.posts .post {
+	.posts .post.has-post-thumbnail {
 		min-height: 70vh;
 	}
 		
@@ -2438,7 +2445,7 @@ li.comment {
 	
 	/* main content */
 
-	.posts .post {
+	.posts .post.has-post-thumbnail {
 		min-height: 400px;
 	}
 	
@@ -2661,7 +2668,7 @@ li.comment {
 		
 	/* main content */
 
-	.posts .post {
+	.posts .post.has-post-thumbnail {
 		min-height: 288px;
 	}
 	
