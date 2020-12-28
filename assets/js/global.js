@@ -1,7 +1,7 @@
 jQuery(document).ready(function($) {
 	
 	
-	// toggle blog-menu
+	// Toggle blog-menu
 	$(".nav-toggle").on("click", function(){	
 		$(this).toggleClass("active");
 		$(".mobile-menu-container").slideToggle();
@@ -40,9 +40,16 @@ jQuery(document).ready(function($) {
         $("html, body").animate({ scrollTop: 0 }, 500);
         return false;
     });
+	
+
+	// Add focus class to dropdown menus
+    $( '.main-menu a' ).on( 'blur focus', function( e ) {
+		$( this ).parents( 'li.menu-item-has-children' ).toggleClass( 'focus' );
+		if ( e.type == 'focus' ) $( this ).trigger( 'focus-applied' );
+	} );
+
     
-    
-    // resize videos after container
+    // Resize videos after container
 	var vidSelector = ".post iframe, .post object, .post video, .widget-content iframe, .widget-content object, .widget-content iframe";	
 	var resizeVideo = function(sSel) {
 		$( sSel ).each(function() {

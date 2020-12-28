@@ -41,6 +41,33 @@ Source: http://www.unsplash.com
 
 == Changelog ==
 
+Version 2.0.0 (2020-12-XX)
+-------------------------
+- Fixed border radius of sub menu item when it's the only child.
+- Made the main menu sub menus accessible with keyboard navigation.
+- Removed global removal of focus outline.
+- Reworked the CSS reset to inherit instead of unset, and use more browser default styles.
+- Made links underlined by default.
+- General CSS cleanup.
+- Removed all title attributes, changed to screen-reader-text where appropriate.
+- Made most of the old post-content styles global, and moved them to the new Element Base CSS section.
+- Only output custom accent color CSS if the accent color is different from the default color.
+- Cleaned up structure of the Customizer code, and moved it to its own class.
+- Removed the languages folder.
+- Moved the js and images folder to the new /assets/ folder, and created a new /css/ folder for the editor styles.
+- Add support for the Core custom logo feature, and only output the radcliffe_logo Customizer fields if they already have a value.
+- Simplified the archive header in index.php, and added output of archive description instead of tag description.
+- Flexed the site header.
+- Deleted license.txt.
+- Merged page.php‚ single.php and image.php into singular.php.
+- Converted the theme screenshot to JPG, reducing file size.
+- Removed searchform.php, adapted styles to the default search form instead. Added a get_search_form filter to include the placeholder attribute.
+- Replaced the mobile nav search form with the default search form and updated styles.
+- Reduced footprint in template-archive.php by including singular.php and moving the markup output to an action.
+- Added filters for get_the_archive_title/_description to make it work for search as well.
+- Removed admin CSS output for the featured image, since it hasn't been needed for a long time.
+- Cleaned up functions.php.
+
 Version 1.30 (2019-04-07)
 -------------------------
 - Added the new wp_body_open() function, along with a function_exists check

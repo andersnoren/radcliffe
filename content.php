@@ -10,7 +10,7 @@ if ( has_post_thumbnail() ) {
 
 <div id="post-<?php the_ID(); ?>" <?php post_class( 'post' ); ?><?php echo $style_attr; ?>>
 
-	<a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>" class="post-header section medium-padding">
+	<a href="<?php the_permalink(); ?>" class="post-header section medium-padding">
 		
 		<div class="post-meta-top">
 		

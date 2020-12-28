@@ -59,14 +59,12 @@
 	<div class="credits-inner section-inner">
 	
 		<p class="fleft">
-		
-			&copy; <?php echo date( 'Y' ); ?> <a href="<?php echo home_url(); ?>" title="<?php esc_attr( bloginfo( 'name' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
-		
+			&copy; <?php echo date( 'Y' ); ?> <a href="<?php echo home_url(); ?>"><?php bloginfo( 'name' ); ?></a>
 		</p>
 		
 		<p class="fright">
 			
-			<span><?php _e( 'Theme by', 'radcliffe' ); ?> <a href="https://www.andersnoren.se">Anders Nor&eacute;n</a> &mdash; </span><a title="<?php _e( 'To the top', 'radcliffe' ); ?>" href="#" class="tothetop"><?php _e( 'Up', 'radcliffe' ); ?> &uarr;</a>
+			<span><?php _e( 'Theme by', 'radcliffe' ); ?> <a href="https://www.andersnoren.se">Anders Nor&eacute;n</a> &mdash; </span><a href="#" class="tothetop"><?php _e( 'Up', 'radcliffe' ); ?> &uarr;</a>
 			
 		</p>
 		

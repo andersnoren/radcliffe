@@ -20,32 +20,37 @@
 		?>
 	
 		<div class="header-search-block section light-padding hidden">
-		
 			<div class="section-inner">
-			
-				<form method="get" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<input type="search" placeholder="<?php _e( 'Type and press enter', 'radcliffe' ); ?>" name="s" id="s" />
-				</form>
-			
+				<?php get_search_form(); ?>
 			</div>
-		
 		</div>
 	
 		<div class="header section light-padding">
 		
 			<div class="header-inner section-inner">
 			
-				<?php if ( get_theme_mod( 'radcliffe_logo' ) ) : ?>
+				<?php 
+
+				$custom_logo_id 	= get_theme_mod( 'custom_logo' );
+				$legacy_logo_url 	= get_theme_mod( 'radcliffe_logo' );
+				$title_element 		= is_front_page() && is_home() ? 'h1' : 'div';
+				
+				if ( $custom_logo_id  || $legacy_logo_url ) : 
+
+					$custom_logo_url = $custom_logo_id ? wp_get_attachment_image_url( $custom_logo_id, 'full' ) : $legacy_logo_url; ?>
 					
-				        <a class="blog-logo" href='<?php echo esc_url( home_url( '/' ) ); ?>' title='<?php echo esc_attr( get_bloginfo( 'title' ) ); ?> &mdash; <?php echo esc_attr( get_bloginfo( 'description' ) ); ?>' rel='home'>
-				        	<img src='<?php echo esc_url( get_theme_mod( 'radcliffe_logo' ) ); ?>' alt='<?php echo esc_attr( get_bloginfo( 'title' ) ); ?>'>
-				        </a>
+					<<?php echo $title_element; ?> class="blog-logo">
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home">
+							<span class="screen-reader-text"><?php echo get_bloginfo( 'title' ); ?></span>
+							<img src="<?php echo esc_url( $custom_logo_url ); ?>">
+						</a>
+					</<?php echo $title_element; ?>>
 			
-				<?php elseif ( get_bloginfo( 'description' ) || get_bloginfo( 'title' ) ) : ?>
+				<?php elseif ( get_bloginfo( 'title' ) ) : ?>
 			
-					<h1 class="blog-title">
-						<a href="<?php echo esc_url( home_url() ); ?>" title="<?php echo esc_attr( get_bloginfo( 'title' ) ); ?> &mdash; <?php echo esc_attr( get_bloginfo( 'description' ) ); ?>" rel="home"><?php echo esc_attr( get_bloginfo( 'title' ) ); ?></a>
-					</h1>
+					<<?php echo $title_element; ?> class="blog-title">
+						<a href="<?php echo esc_url( home_url() ); ?>" rel="home"><?php echo get_bloginfo( 'title' ); ?></a>
+					</<?php echo $title_element; ?>>
 					
 				<?php endif; ?>
 				
@@ -65,7 +70,7 @@
 				
 				</div>
 		
-				<ul class="main-menu fright">
+				<ul class="main-menu">
 					
 					<?php if ( has_nav_menu( 'primary' ) ) {
 
@@ -88,11 +93,13 @@
 						
 					} ?>
 					
-					<li class="search-toggle-menu-item"><a href="#" class="search-toggle" title="<?php _e( 'Show the search field', 'radcliffe' ); ?>"></a></li>
+					<li class="search-toggle-menu-item">
+						<a href="#" class="search-toggle">
+							<span class="screen-reader-text"><?php _e( 'Show the search field', 'radcliffe' ); ?></span>
+						</a>
+					</li>
 						
-				 </ul>
-				
-				<div class="clear"></div>
+				</ul>
 			
 			</div><!-- .header -->
 			
@@ -102,21 +109,22 @@
 		
 			<ul class="mobile-menu">
 					
-					<?php if ( has_nav_menu( 'primary' ) ) {
-																		
-						wp_nav_menu( $menu_args ); 
+				<?php 
+				
+				if ( has_nav_menu( 'primary' ) ) {
+																	
+					wp_nav_menu( $menu_args ); 
+				
+				} else {
+				
+					wp_list_pages( $list_pages_args );
 					
-					} else {
+				} 
+				
+				?>
 					
-						wp_list_pages( $list_pages_args );
-						
-					} ?>
-					
-			 </ul>
+			 </ul><!-- .mobile-menu -->
 			 
-			 <form method="get" class="mobile-search-form" action="<?php echo esc_url( home_url( '/' ) ); ?>">
-				<input type="search" placeholder="<?php _e( 'Search form', 'radcliffe' ); ?>" name="s" id="s" /> 
-				<input type="submit" value="<?php _e( 'Search', 'radcliffe' ); ?>" class="search-button">
-			</form>
+			 <?php get_search_form(); ?>
 			 
 		</div><!-- .mobile-menu-container -->

@@ -131,9 +131,7 @@ samp {
 	padding: 2% 2.5%;
 }
 
-
 /* Custom Text Sizes -------------------------------------- */
-
 
 .editor-styles-wrapper p.has-large-font-size,
 .editor-styles-wrapper p.has-large-font-size.mce-content-body,
@@ -141,7 +139,6 @@ samp {
 .editor-styles-wrapper p.has-larger-font-size.mce-content-body {
 	line-height: 1.4;
 }
-
 
 /* Post Media --------------------------------------------- */
 
