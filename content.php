@@ -3,12 +3,12 @@
 $style_attr = '';
 
 if ( has_post_thumbnail() ) {
-	$style_attr = 'style="background-image: url( ' . get_the_post_thumbnail_url( $post->ID, 'post-image' ) . ' );"';
+	$style_attr = 'style="background-image: url( ' . esc_url( get_the_post_thumbnail_url() ) . ' );"';
 }
 
 ?>
 
-<div id="post-<?php the_ID(); ?>" <?php post_class( 'post' ); ?><?php echo $style_attr; ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class( 'post' ); ?><?php echo $style_attr; ?>>
 
 	<a href="<?php the_permalink(); ?>" class="post-header section medium-padding">
 		
@@ -37,4 +37,4 @@ if ( has_post_thumbnail() ) {
 				
 	</a><!-- .post-header -->
 
-</div><!-- .post -->
+</article><!-- .post -->

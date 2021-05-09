@@ -1,8 +1,9 @@
-=== Radcliffe ===
+=== Eksell ===
 Contributors: Anlino
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=anders%40andersnoren%2ese&lc=US&item_name=Free%20WordPress%20Themes%20from%20Anders%20Noren&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
-Requires at least: 4.4
-Tested up to: 5.0
+Requires at least: 4.5
+Requires PHP: 5.4
+Tested up to: 5.7.1
 Stable tag: trunk
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -67,6 +68,35 @@ Version 2.0.0 (2020-12-XX)
 - Added filters for get_the_archive_title/_description to make it work for search as well.
 - Removed admin CSS output for the featured image, since it hasn't been needed for a long time.
 - Cleaned up functions.php.
+- Removed all 1X icons, added use of 2X icons by default, and compressed all icons.
+- Removed live preview of the Customizer accent color setting.
+- Made the Radcliffe_Customize class pluggable.
+- Restructured the Customizer accent color setting to use an array of filterable properties and elements.
+- Updated theme author URL to remove www.
+- Updated CSS reset to inherit instead of unset, and rely more on default styles for elements.
+- Updated HEAD meta tags to not disable user scalability.
+- Added skip link, and added a corresponding ID to the main element.
+- Switched to HTML5 markup for search forms, and updated search form styles with the new targets.
+- Removed the post-image image size, and set the post thumbnail size to that size instead.
+- Added escaping of home_url() in the footer.
+- Switched to HTML5 elements where suitable.
+- Replaced clearing divs with the new group class, or switched them to flex.
+- Changed the navigation toggle into a button, making it keyboard accessible.
+- Made the navigation toggle align with the content.
+- Search toggle: Only move focus to the search field when we're toggling the form to be visible.
+- Updated screenshot resolution to 1200x900px.
+- Added theme tags for block-styles, wide-blocks.
+- Added "Requires PHP" and "Tested up to" values to style.css.
+- Bumped "Requires at least" to 4.5, since Radcliffe now uses custom_logo.
+- Set all uppercase text to use lining numerals.
+- Replaced the "bold" CSS property value with 700.
+- Updated the posts navigation to use the_posts_navigation().
+- Updated the post navigation to use the_post_navigation().
+- Added a archive header and search form when viewing a search results page without results.
+- Made letter spacing em based.
+- Cleaned up comments nav.
+- Cleaned up Customizer accent color targets.
+- Added a loop for outputting the footer widget areas.
 
 Version 1.30 (2019-04-07)
 -------------------------

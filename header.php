@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 
-<html <?php language_attributes(); ?>>
+<html class="no-js" <?php language_attributes(); ?>>
 
-	<head profile="http://gmpg.org/xfn/11">
-		
-		<meta http-equiv="Content-Type" content="<?php bloginfo( 'html_type' ); ?>; charset=<?php bloginfo( 'charset' ); ?>" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" >
-		 
+	<head>
+
+		<meta http-equiv="content-type" content="<?php bloginfo( 'html_type' ); ?>" charset="<?php bloginfo( 'charset' ); ?>" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+		<link rel="profile" href="//gmpg.org/xfn/11">
+
 		<?php wp_head(); ?>
-	
+
 	</head>
-	
+
 	<body <?php body_class(); ?>>
 
 		<?php 
@@ -18,6 +20,8 @@
 			wp_body_open(); 
 		}
 		?>
+
+		<a class="skip-link button" href="#site-content"><?php esc_html_e( 'Skip to the content', 'radcliffe' ); ?></a>
 	
 		<div class="header-search-block section light-padding hidden">
 			<div class="section-inner">
@@ -25,7 +29,7 @@
 			</div>
 		</div>
 	
-		<div class="header section light-padding">
+		<header class="header section light-padding" id="site-header">
 		
 			<div class="header-inner section-inner">
 			
@@ -54,21 +58,14 @@
 					
 				<?php endif; ?>
 				
-				<div class="nav-toggle">
-				
+				<button class="nav-toggle">
 					<p><?php _e( 'Menu', 'radcliffe' ); ?></p>
-				
 					<div class="bars">
-					
 						<div class="bar"></div>
 						<div class="bar"></div>
 						<div class="bar"></div>
-						
-						<div class="clear"></div>
-					
 					</div>
-				
-				</div>
+				</button>
 		
 				<ul class="main-menu">
 					
@@ -103,7 +100,7 @@
 			
 			</div><!-- .header -->
 			
-		</div><!-- .header.section -->
+		</header><!-- .header.section -->
 		
 		<div class="mobile-menu-container hidden">
 		

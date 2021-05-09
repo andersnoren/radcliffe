@@ -12,7 +12,9 @@ jQuery(document).ready(function($) {
 	$(".search-toggle").on("click", function(){	
 		$(this).toggleClass("active");
 		$(".header-search-block").slideToggle();
-		$(".header-search-block #s").focus();
+		if ( $( this ).hasClass( 'active' ) ) {
+			$(".header-search-block .search-field").focus();
+		}
 		return false;
 	});
 	

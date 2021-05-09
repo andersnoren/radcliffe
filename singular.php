@@ -1,16 +1,18 @@
 <?php get_header(); ?>
 
-<main class="content">
+<main class="content" id="site-content">
 											        
-	<?php if ( have_posts() ) : 
-		
-		while ( have_posts() ) : the_post(); ?>
+	<?php 
+	if ( have_posts() ) : 
+		while ( have_posts() ) : 
+			the_post();
+			?>
 		
 			<article id="post-<?php the_ID(); ?>" <?php post_class( 'section post' ); ?>>
 
 				<?php if ( has_post_thumbnail() ) : ?>
 			
-					<div class="featured-media" style="background-image: url( <?php the_post_thumbnail_url( $post->ID, 'post-image' ); ?> );">
+					<div class="featured-media" style="background-image: url( <?php the_post_thumbnail_url(); ?> );">
 			
 						<?php 
 						
@@ -71,53 +73,53 @@
 					
 				<div class="post-content entry-content section-inner thin">
 				
-					<?php the_content(); ?>
-					
-					<?php wp_link_pages( 'before=<p class="page-links">' . __( 'Pages:', 'radcliffe' ) . ' &after=</p>&separator=<span class="sep">/</span>' ); ?>
+					<?php 
+					the_content();
+					wp_link_pages( 'before=<p class="page-links">' . __( 'Pages:', 'radcliffe' ) . ' &after=</p>&separator=<span class="sep">/</span>' );
+					?>
 				
 				</div><!-- .post-content -->
-
-				<div class="clear"></div>
 
 				<?php do_action( 'radcliffe_singular_after_entry_content' ); ?>
 
 				<?php if ( is_single() ) : ?>
 				
-					<div class="post-meta section-inner thin">
+					<div class="post-meta section-inner thin group">
 					
 						<div class="meta-block post-author">
 						
 							<h2 class="meta-title"><?php _e( 'About the author', 'radcliffe' ); ?></h2>
 							
-							<div class="post-author-container">
+							<div class="post-author-container group">
 						
 								<?php echo get_avatar( get_the_author_meta( 'email' ), '160' ); ?>
 								
 								<div class="post-author-inner">
 							
 									<h3><?php the_author_posts_link(); ?></h3>
+
+									<?php 
+
+									$author_description = get_the_author_meta( 'description' );
+									$author_url			= get_the_author_meta( 'user_url' );
 									
-									<p class="author-description"><?php the_author_meta( 'description' ); ?></p>
+									if ( $author_description ) : ?>
+									
+										<div class="author-description"><?php echo wpautop( $author_description ); ?></div>
+
+									<?php endif; ?>
 									
 									<div class="author-links">
 										
 										<a class="author-link-posts" href="<?php echo get_author_posts_url( get_the_author_meta( 'ID' ) ); ?>"><?php _e( 'Author archive', 'radcliffe' ); ?></a>
 										
-										<?php 
-										$author_url = get_the_author_meta( 'user_url' ); 
-										$author_url = preg_replace( '#^https?://#', '', rtrim( $author_url, '/' ) );
-																		
-										if ( ! empty( $author_url ) ) : ?>
-										
-											<a class="author-link-website" href="<?php the_author_meta( 'user_url' ); ?>"><?php _e( 'Author website', 'radcliffe' ); ?></a>
-											
+										<?php if ( $author_url ) : ?>
+											<a class="author-link-website" href="<?php echo esc_url( $author_url ); ?>"><?php _e( 'Author website', 'radcliffe' ); ?></a>
 										<?php endif; ?>
 										
 									</div><!-- .author-links -->
 								
 								</div>
-								
-								<div class="clear"></div>
 							
 							</div>
 						
@@ -127,11 +129,7 @@
 						
 							<h2 class="meta-title"><?php _e( 'About the post', 'radcliffe' ); ?></h2>
 						
-							<p class="post-categories">
-														
-								<?php the_category( ', ' ); ?>
-							
-							</p>
+							<p class="post-categories"><?php the_category( ', ' ); ?></p>
 							
 							<?php 
 							if ( has_tag() ) : 
@@ -140,38 +138,12 @@
 								<?php 
 							endif;
 
-							$next_post = get_next_post();
-							$prev_post = get_previous_post();
+							the_post_navigation( array( 'class' => 'post-nav' ) );
 
-							if ( $next_post || $prev_post ) : 
-								?>
-						
-								<div class="post-nav">
-					
-									<?php if ( $next_post ) : ?>
-										<p class="post-nav-next">
-											<a href="<?php echo get_permalink( $next_post->ID ); ?>"><?php echo get_the_title( $next_post->ID ); ?></a>
-										</p>
-									<?php endif; ?>
-									
-									<?php if ( $prev_post ) : ?>
-										<p class="post-nav-prev">
-											<a href="<?php echo get_permalink( $prev_post->ID ); ?>"><?php echo get_the_title( $prev_post->ID ); ?></a>
-										</p>
-									<?php endif; ?>
-									
-									<div class="clear"></div>
-								
-								</div><!-- .post-nav -->
-
-								<?php 
-							endif; 
 							?>
 						
 						</div><!-- .post-cat-tags -->
-						
-						<div class="clear"></div>
-										
+
 					</div><!-- .post-meta -->
 
 				<?php endif; ?>
@@ -182,13 +154,11 @@
 
 			// Output comments if comments are open or if there are comments, and check for password
 			if ( ( comments_open() || get_comments_number() ) && ! post_password_required() ) {
-				comments_template( '', true ); 
+				comments_template( '', true );
 			}
 				
-		endwhile; 
-
+		endwhile;
 	endif; 
-
 	?>
 
 </main><!-- .content -->

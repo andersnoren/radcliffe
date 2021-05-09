@@ -16,7 +16,10 @@ if ( ! function_exists( 'radcliffe_setup' ) ) :
 		
 		// Post thumbnails
 		add_theme_support( 'post-thumbnails' );
-		add_image_size( 'post-image', 1440, 9999 );
+		set_post_thumbnail_size( 766, 9999 );
+
+		// HTML5 semantic markup for search forms.
+		add_theme_support( 'html5', array( 'search-form' ) );
 		
 		// Add nav menu
 		register_nav_menu( 'primary', __( 'Primary Menu', 'radcliffe' ) );
@@ -98,7 +101,7 @@ endif;
 if ( ! function_exists( 'radcliffe_add_editor_styles' ) ) :
 	function radcliffe_add_editor_styles() {
 		
-		add_editor_style( 'assets/css/radcliffe-classic-editor-styles.css' );
+		add_editor_style( 'assets/css/classic-editor-styles.css' );
 
 		/**
 		 * Translators: If there are characters in your language that are not
@@ -128,7 +131,7 @@ if ( ! function_exists( 'radcliffe_widget_areas_registration' ) ) :
 			'before_title' 	=> '<h3 class="widget-title">',
 			'after_title' 	=> '</h3>',
 			'before_widget' => '<div class="widget %2$s"><div class="widget-content">',
-			'after_widget' 	=> '</div><div class="clear"></div></div>'
+			'after_widget' 	=> '</div></div>'
 		);
 
 		register_sidebar( array_merge( $shared_args, array(
@@ -227,15 +230,25 @@ endif;
 if ( ! function_exists( 'radcliffe_filter_archive_title' ) ) :
 	function radcliffe_filter_archive_title( $title ) {
 
-		// On home, use the title of the page for posts page.
-		$blog_page_id = get_option( 'page_for_posts' );
-		if ( is_home() && $blog_page_id && get_the_title( $blog_page_id ) ) {
-			$title = get_the_title( $blog_page_id );
-		} 
+		$paged = get_query_var( 'paged' ) ? get_query_var( 'paged' ) : 1; 
+
+		// On home, show no title
+		if ( is_home() ) {
+			if ( $paged == 1 ) {
+				$title = '';
+			} else {
+				global $wp_query;
+				$title = sprintf( __( 'Page %1$s of %2$s', 'radcliffe' ), $paged, $wp_query->max_num_pages );
+			}
+		}
 
 		// On search, show the search query.
 		elseif ( is_search() ) {
-			$title = sprintf( _x( 'Search: %s', '%s = The search query', 'radcliffe' ), '&ldquo;' . get_search_query() . '&rdquo;' );
+			if ( have_posts() ) {
+				$title = sprintf( _x( 'Search: %s', '%s = The search query', 'radcliffe' ), '&ldquo;' . get_search_query() . '&rdquo;' );
+			} else {
+				$title = __( 'No results', 'radcliffe' );
+			}
 		}
 
 		return $title;
@@ -510,7 +523,7 @@ if ( ! function_exists( 'radcliffe_block_editor_styles' ) ) :
 		}
 
 		// Enqueue the editor styles
-		wp_enqueue_style( 'radcliffe-block-editor-styles', get_theme_file_uri( '/assets/css/radcliffe-block-editor-styles.css' ), $dependencies, '1.0', 'all' );
+		wp_enqueue_style( 'radcliffe-block-editor-styles', get_theme_file_uri( '/assets/css/block-editor-styles.css' ), $dependencies, '1.0', 'all' );
 
 	}
 	add_action( 'enqueue_block_editor_assets', 'radcliffe_block_editor_styles', 1 );
