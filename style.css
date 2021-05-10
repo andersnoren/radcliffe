@@ -23,13 +23,13 @@
 	2.  Structure
 	3.	Site Header
 	4.	Site Navigation
-	5.	Main Content
-	6.  Single Post
+	5.	Post: Archive
+	6.  Post: Single
 	7.	Blocks
 	8.	Post Content
 	9.	Comments
 	10.	Site Pagination
-	11.	Page & Page Templates
+	11.	Page Templates
 	12.	Site Footer
 	13.	Site Credits
 	14. Media Queries
@@ -636,7 +636,7 @@ input[type="submit"]:active {
 	font-family: 'Abril Fatface', serif;
 	font-feature-settings: "lnum";
 	font-size: 2em;
-	letter-spacing: .05em;
+	letter-spacing: .01em;
 	line-height: 1;
 	text-transform: uppercase;
 }
@@ -983,7 +983,7 @@ input[type="submit"]:active {
 
 
 /* -------------------------------------------------------------------------------- */
-/*	5. Main Content
+/*	5. POST: ARCHIVE
 /* -------------------------------------------------------------------------------- */
 
 
@@ -1009,8 +1009,6 @@ input[type="submit"]:active {
 	min-height: 682px;
 }
 
-/* featured media */
-
 .featured-media {
 	background-position: center;
 	background-size: cover;
@@ -1020,7 +1018,9 @@ input[type="submit"]:active {
 	width: 100%;
 }
 
-a.featured-media:hover { opacity: 0.75; }
+a.featured-media:hover { 
+	opacity: 0.75; 
+}
 
 .featured-media > img {
 	display: block;
@@ -1030,33 +1030,41 @@ a.featured-media:hover { opacity: 0.75; }
 
 .media-caption-container {
 	position: absolute;
-	bottom: 5%;
-	right: 5%;
-	left: 5%;
+		bottom: 5%;
+		right: 5%;
+		left: 5%;
 	text-align: center;
 }
 
 .media-caption {
-	display: inline-block;
-	padding: 9px 12px;
+	background-color: rgba( 17, 17, 17, .5 );
 	border-radius: 3px;
-	background: #444;
-	background: rgba(17,17,17,0.5);
-	font-size: 0.8em;
-	line-height: 120%;
-	font-weight: 400;
-	font-style: italic;
 	color: #fff;
+	display: inline-block;
+	font-size: 0.8em;
+	font-style: italic;
+	font-weight: 400;
+	line-height: 1.2;
+	padding: 9px 12px;
 }
 
-.media-caption:hover { background-color: rgba(17,17,17,0.75); }
+.media-caption:hover { 
+	background-color: rgba( 17, 17, 17, .75 ); 
+}
 
-/* post header */
+/* Post Header ------------------------------- */
 
-.post-header { display: block; }
+.post-header { 
+	display: block; 
+}
 
-a.post-header { position: static; }
-a.featured-media + a.post-header { position: absolute; }
+a.post-header { 
+	position: static; 
+}
+
+a.featured-media + a.post-header { 
+	position: absolute; 
+}
 
 a.post-header {
 	background: rgba(17,17,17,0.35);
@@ -1073,16 +1081,21 @@ a.post-header:hover {
 	background: rgba(17,17,17,0.75);
 }
 
-.post.no-featured-image a.post-header { position: static; }
-.post.no-featured-image a.post-header:hover { background: #333; }
+.post.no-featured-image a.post-header { 
+	position: static;
+}
+
+.post.no-featured-image a.post-header:hover { 
+	background: #333;
+}
 
 a.post-header:hover .post-title {
 	color: #ca2017;
 }
 
 .post-meta-top {
-	font-size: 0.9em;
 	font-feature-settings: "lnum";
+	font-size: 0.9em;
 	font-weight: 700;
 	letter-spacing: .05em;
 	margin-bottom: 30px;
@@ -1110,10 +1123,10 @@ a.post-header .post-meta-top .sep {
 }
 
 .post-title {
-	font-feature-settings: "lnum";
 	font-family: 'Abril Fatface', serif;
+	font-feature-settings: "lnum";
 	font-size: 3em;
-	letter-spacing: .05em;
+	letter-spacing: .01em;
 	margin: 0;
 	text-align: center;
 	text-transform: uppercase;
@@ -1121,15 +1134,61 @@ a.post-header .post-meta-top .sep {
 }
 
 a.post-header .post-title {
-	max-width: 90%;
 	margin-left: auto;
 	margin-right: auto;
+	max-width: 90%;
 	text-shadow: 2px 2px 0 rgba(0,0,0,0.1);
+}
+
+/* Search ------------------------------------ */
+
+.search-no-results .post-content p {
+	text-align: center;
+}
+
+.search-form {
+	position: relative;
+}
+
+.search-form label {
+	font-size: inherit;
+}
+
+.search-form .search-field {
+	font-size: 1em;
+	padding: 20px 70px 20px 20px;
+	width: 100%;
+}
+
+.search-form .search-field:focus {
+	background-color: #eee;
+	color: inherit;
+}
+
+.search-form input[type="submit"] {
+	height: 40px;
+	background: url(assets/images/icons/spyglass-d.png) no-repeat center;
+	background-size: 20px auto;
+	border: none;
+	opacity: 0.5;
+	padding: 0;
+	position: absolute;
+		right: 20px;
+		top: 50%;
+	text-indent: -9999px;
+	transform: translateY( -50% );
+	width: 40px;
+}
+
+.search-form input[type="submit"]:hover,
+.search-form input[type="submit"]:focus {
+	background-color: transparent;
+	opacity: 1;
 }
 
 
 /* -------------------------------------------------------------------------------- */
-/*	6. Single Post
+/*	6. Post: Single
 /* -------------------------------------------------------------------------------- */
 
 
@@ -1199,7 +1258,9 @@ article.post.section {
 
 .post-meta {
 	color: #666;
+	display: flex;
 	font-size: 14px;
+	justify-content: space-between;
 	margin-top: 80px;
 }
 
@@ -1207,6 +1268,9 @@ article.post.section {
 	border-top: 1px solid #ddd;
 	padding-top: 12px;
 }
+
+.post-author { width: 55%; }
+.post-cat-tags { width: 40%; }
 
 .meta-title {
 	color: #767676;
@@ -1220,16 +1284,6 @@ article.post.section {
 .post-author-container {
 	min-height: 60px;
 	position: relative;
-}
-
-.post-author {
-	width: 55%;
-	float: left;
-}
-
-.post-cat-tags {
-	width: 40%;
-	float: right;
 }
 
 .post-author .avatar {
@@ -1261,9 +1315,9 @@ article.post.section {
 }
 
 .post-author p {
-	margin-top: 8px;
-	line-height: 150%;
 	color: #444;
+	line-height: 1.5;
+	margin-top: 8px;
 }
 
 /* AUTHOR LINKS */
@@ -1938,22 +1992,9 @@ li.comment {
 
 
 /* -------------------------------------------------------------------------------- */
-/*	11. Page & Page Templates
+/*	11. Page Templates
 /* -------------------------------------------------------------------------------- */
 
-
-.page .post-header {
-	position: static;
-}
-
-.page .post-edit-link {
-	font-family: 'Open Sans', sans-serif;
-	font-feature-settings: "lnum";
-	font-size: 0.8em;
-	font-weight: 700;
-	letter-spacing: .05em;
-	text-transform: uppercase;
-}
 
 /* Template: Archives ------------------------ */
 
@@ -2009,64 +2050,6 @@ li.comment {
 	color: #ca2017;
 }
 
-/* Single Attachment ------------------------- */
-
-.single-attachment .attachment-post-image {
-	display: block;
-	margin: 0 auto;
-}
-
-/* Error 404 --------------------------------- */
-
-.error404 .content .search-form {
-	margin-top: 25px;
-}
-
-/* Search ------------------------------------ */
-
-.search-no-results .post-content p {
-	text-align: center;
-}
-
-.search-form {
-	position: relative;
-}
-
-.search-form label {
-	font-size: inherit;
-}
-
-.search-form .search-field {
-	font-size: 1em;
-	padding: 20px 80px 20px 20px;
-	width: 100%;
-}
-
-.search-form .search-field:focus {
-	background-color: #eee;
-	color: inherit;
-}
-
-.search-form input[type="submit"] {
-	height: 40px;
-	background: url(assets/images/icons/spyglass-d.png) no-repeat center;
-	background-size: 20px auto;
-	border: none;
-	opacity: 0.5;
-	padding: 0;
-	position: absolute;
-		right: 20px;
-		top: 50%;
-	text-indent: -9999px;
-	transform: translateY( -50% );
-	width: 40px;
-}
-
-.search-form input[type="submit"]:hover,
-.search-form input[type="submit"]:focus {
-	opacity: 1;
-}
-
 
 /* -------------------------------------------------------------------------------- */
 /*	12. Site Footer
@@ -2079,12 +2062,8 @@ li.comment {
 	border-top: 1px solid #ddd;
 }
 
-.widget {
+.widget + .widget {
 	margin-top: 60px;
-}
-
-.widget:first-child {
-	margin-top: 0;
 }
 
 .widget-content {
@@ -2338,18 +2317,13 @@ li.comment {
 
 	/* POST CONTENT */
 
-	.post-content .alignright,
-	.post-content .alignleft {
+	.alignright,
+	.alignleft {
 		max-width: 45%;
 	}
 
-	.post-content .alignright {
-		margin-right: 0;
-	}
-
-	.post-content .alignleft {
-		margin-left: 0;
-	}
+	.alignright { margin-right: 0; }
+	.alignleft { margin-left: 0; }
 
 }
 
@@ -2451,6 +2425,32 @@ li.comment {
 		max-width: 88%;
 	}
 
+	/* ELEMENT BASE */
+
+	h1, h2, h3, h4, h5, h6 {
+		margin: 35px 0 18px;
+	}
+
+	h1 { font-size: 1.5em; }
+	h2 { font-size: 1.35em; }
+	h3 { font-size: 1.2em; }
+	h4 { font-size: 1.1em; }
+	h5 { font-size: 0.9em; }
+	h6 { font-size: 0.75em; margin-bottom: 10px; }
+
+	blockquote:before,
+	blockquote:after {
+		margin: 25px auto;
+	}
+
+	blockquote p {
+		font-size: 1em;
+	}
+
+	blockquote cite {
+		margin-top: 20px;
+	}
+
 	/* SITE HEADER */
 
 	.header {
@@ -2519,54 +2519,37 @@ li.comment {
 		text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
 	}
 
-	/* SINGLE POST */
+	/* POST: SINGLE */
 
 	.post-meta {
+		display: block;
 		margin-top: 50px;
 	}
 
 	.post-meta .meta-block {
 		width: 100%;
-		float: none;
-		margin: 0;
 	}
 
 	.post-meta .meta-block + .meta-block {
 		margin-top: 40px;
 	}
 
-	.post-author .avatar { max-width: 80px; }
-	.post-author-container { min-height: 80px; }
-	.post-author-inner { margin-left: 100px; }
+	.post-author .avatar { 
+		max-width: 80px; 
+	}
+
+	.post-author-container { 
+		min-height: 80px; 
+	}
+
+	.post-author-inner { 
+		margin-left: 100px; 
+	}
 
 	/* POST CONTENT */
 
-	h1, h2, h3, h4, h5, h6 {
-		margin: 35px 0 18px;
-	}
-
-	h1 { font-size: 1.5em; }
-	h2 { font-size: 1.35em; }
-	h3 { font-size: 1.2em; }
-	h4 { font-size: 1.1em; }
-	h5 { font-size: 0.9em; }
-	h6 { font-size: 0.75em; margin-bottom: 10px; }
-
-	.post-content blockquote:before,
-	.post-content blockquote:after {
-		margin: 25px auto;
-	}
-
-	.post-content blockquote p {
-		font-size: 1em;
-	}
-
-	.post-content blockquote cite {
-		margin-top: 20px;
-	}
-
-	.post-content .alignleft,
-	.post-content .alignright {
+	.alignleft,
+	.alignright {
 		float: none;
 		margin: 2em auto;
 		max-width: 100%;
@@ -2675,7 +2658,7 @@ li.comment {
 		padding: 30px 0;
 	}
 
-	/* PAGE & PAGE TEMPLATES */
+	/* PAGE TEMPLATES */
 
 	.archive-container {
 		margin-top: 40px;
@@ -2705,16 +2688,14 @@ li.comment {
 
 	/* SITE FOOTER */
 
-	.footer .one-third,
-	.widget {
-		display: block;
+	.footer .one-third {
 		float: none;
-		margin: 40px 0 0 0;
 		width: 100%;
 	}
 
-	.footer .one-third:first-child {
-		margin-top: 0;
+	.footer .one-third + .one-third,
+	.widget + .widget {
+		margin: 40px 0 0 0;
 	}
 
 	/* CREDITS */
@@ -2750,18 +2731,17 @@ li.comment {
 	}
 
 	.cat-tags div {
-		width: 100%;
-		margin: 0;
-		margin-top: 30px;
 		font-size: 1em;
-	}
-
-	.cat-tags div strong {
-		margin-bottom: 5px;
+		margin: 30px 0 0;
+		width: 100%;
 	}
 
 	.cat-tags div:first-child {
 		margin-top: 0;
+	}
+
+	.cat-tags div strong {
+		margin-bottom: 5px;
 	}
 
 	/* COMMENTS */
@@ -2795,7 +2775,7 @@ li.comment {
 		width: auto;
 	}
 
-	/* SINGLE POST */
+	/* POST: SINGLE */
 
 	.post-author .avatar {
 		max-width: 60px;

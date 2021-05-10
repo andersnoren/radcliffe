@@ -84,7 +84,7 @@
 
 				<?php if ( is_single() ) : ?>
 				
-					<div class="post-meta section-inner thin group">
+					<div class="post-meta section-inner thin">
 					
 						<div class="meta-block post-author">
 						
