@@ -292,23 +292,6 @@ endif;
 
 
 /* ---------------------------------------------------------------------------------------------
-   FILTER SEARCH FORM HTML
-   Add the placeholder attribute to the search form.
-   --------------------------------------------------------------------------------------------- */
-
-if ( ! function_exists( 'radcliffe_filter_get_search_form' ) ) :
-	function radcliffe_filter_get_search_form( $form ) {
-
-		$placeholder_attr = ' placeholder="' . __( 'Search form', 'radcliffe' ) . '"';
-
-		return str_replace( ' value=', $placeholder_attr . ' src=', $form );
-
-	}
-	add_filter( 'get_search_form', 'radcliffe_filter_get_search_form' );
-endif;
-
-
-/* ---------------------------------------------------------------------------------------------
    CUSTOM MORE LINK TEXT
    --------------------------------------------------------------------------------------------- */
 
@@ -319,24 +302,6 @@ if ( ! function_exists( 'radcliffe_custom_more_link' ) ) :
 
 	}
 	add_filter( 'the_content_more_link', 'radcliffe_custom_more_link', 10, 2 );
-endif;
-
-
-/* ---------------------------------------------------------------------------------------------
-   BODY & POST CLASSES
-   --------------------------------------------------------------------------------------------- */
-
-if ( ! function_exists( 'radcliffe_body_post_classes' ) ) :
-	function radcliffe_body_post_classes( $classes ) {
-
-		// If has post thumbnail
-		$classes[] = has_post_thumbnail() ? 'has-featured-image' : 'no-featured-image';
-
-		return $classes;
-
-	}
-	add_filter( 'post_class', 'radcliffe_body_post_classes' );
-	add_filter( 'body_class', 'radcliffe_body_post_classes' );
 endif;
 
 

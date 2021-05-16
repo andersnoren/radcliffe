@@ -11,7 +11,7 @@
 	License: GNU General Public License version 2.0
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 	Requires PHP: 5.4
-	Tested up to: 5.7.1
+	Tested up to: 5.7.2
 
 	All files, unless otherwise stated, are released under the GNU General Public License
 	version 2.0 (http://www.gnu.org/licenses/gpl-2.0.html)
@@ -414,11 +414,6 @@ hr {
 	width: 100px;
 }
 
-hr.is-style-wide,
-hr.is-style-dots {
-	width: 100%;
-}
-
 /* Address ----------------------------------- */
 
 address {
@@ -613,8 +608,8 @@ input[type="submit"]:active {
 	padding: 40px 0;
 }
 
-.single.no-featured-image .header,
-.page.no-featured-image .header,
+.single:not(.has-post-thumbnail) .header,
+.page:not(.has-post-thumbnail) .header,
 .error404 .header {
 	border-bottom: 1px solid #ddd;
 }
@@ -1081,11 +1076,11 @@ a.post-header:hover {
 	background: rgba(17,17,17,0.75);
 }
 
-.post.no-featured-image a.post-header { 
+.post:not(.has-post-thumbnail) a.post-header { 
 	position: static;
 }
 
-.post.no-featured-image a.post-header:hover { 
+.post:not(.has-post-thumbnail) a.post-header:hover { 
 	background: #333;
 }
 

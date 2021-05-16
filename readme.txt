@@ -3,7 +3,7 @@ Contributors: Anlino
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=anders%40andersnoren%2ese&lc=US&item_name=Free%20WordPress%20Themes%20from%20Anders%20Noren&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted
 Requires at least: 4.5
 Requires PHP: 5.4
-Tested up to: 5.7.1
+Tested up to: 5.7.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -42,7 +42,7 @@ Source: http://www.unsplash.com
 
 == Changelog ==
 
-Version 2.0.0 (2020-12-XX)
+Version 2.0.0 (2021-05-16)
 -------------------------
 - Fixed border radius of sub menu item when it's the only child.
 - Made the main menu sub menus accessible with keyboard navigation.
@@ -77,6 +77,7 @@ Version 2.0.0 (2020-12-XX)
 - Updated HEAD meta tags to not disable user scalability.
 - Added skip link, and added a corresponding ID to the main element.
 - Switched to HTML5 markup for search forms, and updated search form styles with the new targets.
+- Removed radcliffe_filter_get_search_form(), since it's not needed for the HTML5 search form.
 - Removed the post-image image size, and set the post thumbnail size to that size instead.
 - Added escaping of home_url() in the footer.
 - Switched to HTML5 elements where suitable.
@@ -97,6 +98,7 @@ Version 2.0.0 (2020-12-XX)
 - Cleaned up comments nav.
 - Cleaned up Customizer accent color targets.
 - Added a loop for outputting the footer widget areas.
+- Removed radcliffe_body_post_classes(), adjusted CSS to account for removing the no-featured-image class.
 
 Version 1.30 (2019-04-07)
 -------------------------
