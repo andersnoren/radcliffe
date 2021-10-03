@@ -42,6 +42,11 @@ Source: http://www.unsplash.com
 
 == Changelog ==
 
+Version 2.0.1 (2021-10-03)
+-------------------------
+- Fixed the blog title pushing the navigation toggle out of bounds when the title is really long on mobile.
+- Fixed the post thumbnail size being incorrect since 2.0.0.
+
 Version 2.0.0 (2021-05-16)
 -------------------------
 - Fixed border radius of sub menu item when it's the only child.

@@ -16,7 +16,7 @@ if ( ! function_exists( 'radcliffe_setup' ) ) :
 		
 		// Post thumbnails
 		add_theme_support( 'post-thumbnails' );
-		set_post_thumbnail_size( 766, 9999 );
+		set_post_thumbnail_size( 1440, 9999 );
 
 		// HTML5 semantic markup for search forms.
 		add_theme_support( 'html5', array( 'search-form' ) );
