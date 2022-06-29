@@ -10,7 +10,7 @@
 	font-size: 22px;
 }
 
-.editor-rich-text__tinymce {
+:root .editor-styles-wrapper {
 	color: #222;
 	font-family: 'Crimson Text', 'Times New Roman', Times, serif;
 	-webkit-font-smoothing: antialiased;
@@ -43,7 +43,7 @@
 
 /* Typography --------------------------------------------- */
 
-.editor-post-title__block .editor-post-title__input {
+.edit-post-visual-editor__post-title-wrapper .editor-post-title {
 	color: #222;
 	font-family: 'Abril Fatface', serif !important;
 	font-size: 3em;

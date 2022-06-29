@@ -73,20 +73,13 @@ if ( ! function_exists( 'radcliffe_load_style' ) ) :
 		if ( ! is_admin() ) {
 
 			$dependencies = array();
+			$theme_version = wp_get_theme( 'radcliffe' )->get( 'Version' );
 
-			/**
-			 * Translators: If there are characters in your language that are not
-			 * supported by the theme fonts, translate this to 'off'. Do not translate
-			 * into your own language.
-			 */
-			$google_fonts = _x( 'on', 'Google Fonts: on or off', 'radcliffe' );
+			wp_register_style( 'radcliffe_googlefonts', get_stylesheet_directory_uri() . '/assets/css/fonts.css' );
+			$dependencies[] = 'radcliffe_googlefonts';
 
-			if ( 'off' !== $google_fonts ) {
-				wp_enqueue_style( 'radcliffe_googlefonts', '//fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,700,700italic,800|Crimson+Text:400,400italic,700,700italic|Abril+Fatface:400' );
-				$dependencies[] = 'radcliffe_googlefonts';
-			}
+			wp_enqueue_style( 'radcliffe_style', get_template_directory_uri() . '/style.css', $dependencies, $theme_version );
 
-			wp_enqueue_style( 'radcliffe_style', get_template_directory_uri() . '/style.css', $dependencies );
 		}
 		
 	}
@@ -101,19 +94,7 @@ endif;
 if ( ! function_exists( 'radcliffe_add_editor_styles' ) ) :
 	function radcliffe_add_editor_styles() {
 		
-		add_editor_style( 'assets/css/classic-editor-styles.css' );
-
-		/**
-		 * Translators: If there are characters in your language that are not
-		 * supported by the theme fonts, translate this to 'off'. Do not translate
-		 * into your own language.
-		 */
-		$google_fonts = _x( 'on', 'Google Fonts: on or off', 'radcliffe' );
-
-		if ( 'off' !== $google_fonts ) {
-			$font_url = '//fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,700,700italic,800|Crimson+Text:400,400italic,700,700italic';
-			add_editor_style( str_replace( ',', '%2C', $font_url ) );
-		}
+		add_editor_style( array( 'assets/css/classic-editor-styles.css', 'assets/css/fonts.css' ) );
 
 	}
 	add_action( 'init', 'radcliffe_add_editor_styles' );
@@ -470,25 +451,10 @@ endif;
 if ( ! function_exists( 'radcliffe_block_editor_styles' ) ) :
 	function radcliffe_block_editor_styles() {
 
-		$dependencies = array();
+		$theme_version = wp_get_theme( 'radcliffe' )->get( 'Version' );
 
-		/**
-		 * Translators: If there are characters in your language that are not
-		 * supported by the theme fonts, translate this to 'off'. Do not translate
-		 * into your own language.
-		 */
-		$google_fonts = _x( 'on', 'Google Fonts: on or off', 'radcliffe' );
-
-		if ( 'off' !== $google_fonts ) {
-
-			// Register Google Fonts
-			wp_register_style( 'radcliffe-block-editor-styles-font', '//fonts.googleapis.com/css?family=Open+Sans:300,400,400italic,600,700,700italic,800|Crimson+Text:400,400italic,700,700italic|Abril+Fatface:400', false, 1.0, 'all' );
-			$dependencies[] = 'radcliffe-block-editor-styles-font';
-
-		}
-
-		// Enqueue the editor styles
-		wp_enqueue_style( 'radcliffe-block-editor-styles', get_theme_file_uri( '/assets/css/block-editor-styles.css' ), $dependencies, '1.0', 'all' );
+		wp_register_style( 'radcliffe-block-editor-styles-font', get_stylesheet_directory_uri() . '/assets/css/fonts.css' );
+		wp_enqueue_style( 'radcliffe-block-editor-styles', get_theme_file_uri( '/assets/css/block-editor-styles.css' ), array( 'radcliffe-block-editor-styles-font' ), $theme_version, 'all' );
 
 	}
 	add_action( 'enqueue_block_editor_assets', 'radcliffe_block_editor_styles', 1 );

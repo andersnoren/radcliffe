@@ -1,0 +1,95 @@
+@font-face {
+	font-family: 'Crimson Text';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url( ../fonts/crimson-text-v19-latin-regular.woff2 ) format('woff2');
+}
+
+@font-face {
+	font-family: 'Crimson Text';
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url( ../fonts/crimson-text-v19-latin-italic.woff2 ) format('woff2');
+}
+
+@font-face {
+	font-family: 'Crimson Text';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url( ../fonts/crimson-text-v19-latin-700.woff2 ) format('woff2');
+}
+
+@font-face {
+	font-family: 'Crimson Text';
+	font-style: italic;
+	font-weight: 700;
+	font-display: swap;
+	src: url( ../fonts/crimson-text-v19-latin-700italic.woff2 ) format('woff2');
+}
+
+@font-face {
+	font-family: 'Abril Fatface';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url( ../fonts/abril-fatface-v19-latin-regular.woff2 ) format('woff2');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 300;
+	font-display: swap;
+	src: url( ../fonts/open-sans-v29-latin-300.woff2 ) format('woff2');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 400;
+	font-display: swap;
+	src: url( ../fonts/open-sans-v29-latin-regular.woff2 ) format('woff2');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: 400;
+	font-display: swap;
+	src: url( ../fonts/open-sans-v29-latin-italic.woff2 ) format('woff2');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 600;
+	font-display: swap;
+	src: url( ../fonts/open-sans-v29-latin-600.woff2 ) format('woff2');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 700;
+	font-display: swap;
+	src: url( ../fonts/open-sans-v29-latin-700.woff2 ) format('woff2');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: italic;
+	font-weight: 700;
+	font-display: swap;
+	src: url( ../fonts/open-sans-v29-latin-700italic.woff2 ) format('woff2');
+}
+
+@font-face {
+	font-family: 'Open Sans';
+	font-style: normal;
+	font-weight: 800;
+	font-display: swap;
+	src: url( ../fonts/open-sans-v29-latin-800.woff2 ) format('woff2');
+}
