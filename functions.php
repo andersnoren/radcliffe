@@ -75,7 +75,7 @@ if ( ! function_exists( 'radcliffe_load_style' ) ) :
 			$dependencies = array();
 			$theme_version = wp_get_theme( 'radcliffe' )->get( 'Version' );
 
-			wp_register_style( 'radcliffe_googlefonts', get_stylesheet_directory_uri() . '/assets/css/fonts.css' );
+			wp_register_style( 'radcliffe_googlefonts', get_theme_file_uri( '/assets/css/fonts.css' ) );
 			$dependencies[] = 'radcliffe_googlefonts';
 
 			wp_enqueue_style( 'radcliffe_style', get_template_directory_uri() . '/style.css', $dependencies, $theme_version );
@@ -453,7 +453,7 @@ if ( ! function_exists( 'radcliffe_block_editor_styles' ) ) :
 
 		$theme_version = wp_get_theme( 'radcliffe' )->get( 'Version' );
 
-		wp_register_style( 'radcliffe-block-editor-styles-font', get_stylesheet_directory_uri() . '/assets/css/fonts.css' );
+		wp_register_style( 'radcliffe-block-editor-styles-font', get_theme_file_uri( '/assets/css/fonts.css' ) );
 		wp_enqueue_style( 'radcliffe-block-editor-styles', get_theme_file_uri( '/assets/css/block-editor-styles.css' ), array( 'radcliffe-block-editor-styles-font' ), $theme_version, 'all' );
 
 	}
