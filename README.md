@@ -2,7 +2,7 @@
 
 A theme for bloggers who want their content to take center stage. Radcliffe features responsive design, retina-ready assets, full width header images, beautiful design and typography, Block Editor support, support for custom logo, support for custom accent color, three widget areas, and editor styles.
 
-![Radcliffe](https://github.com/andersnoren/radcliffe/blob/main/screenshot.png)
+![Radcliffe](https://github.com/andersnoren/radcliffe/blob/master/screenshot.jpg)
 
 You can download the latest stable release of Radcliffe [from WordPress.org](https://wordpress.org/themes/radcliffe/).
 
